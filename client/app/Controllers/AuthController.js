@@ -44,7 +44,10 @@ function authButton(user) {
     <button class="btn btn-small btn-dark text-muted" onclick="app.authController.logout()">✖</button>
   `
     : /*html*/ `
-    <button class="btn btn-dark" onclick="app.authController.login()">login</button>
+    <button class="btn btn-primary" onclick="app.authController.login()">
+      <span class="spinner-grow spinner-grow-sm"></span>
+        Log In
+    </button>
   `;
 }
 

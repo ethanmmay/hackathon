@@ -5,6 +5,24 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
+.title-font{
+  font-family: 'Fascinate', cursive;
+  font-size: 64px;
+  color:#3CC47C;
+  font-weight:500;
+  text-shadow:6px 6px 15px red;
+
+}
+.tag-font{
+  font-family: 'Jura', sans-serif;
+  color: #E9c893;
+}
+.border-radius{
+  border-radius: 20%;
+}
+
+
 :root {
   --blue: blue;
   --indigo: indigo;
@@ -4283,10 +4301,10 @@ input[type=button].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: white;
+  background-color: #828081;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border: 1px solid #00000020;
+  border-radius: 10%;
 }
 .card > hr {
   margin-right: 0;
