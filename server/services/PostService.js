@@ -17,6 +17,10 @@ class PostService {
   async create(body) {
     return await dbContext.Posts.create(body)
   }
+
+  async edit(id, body) {
+    return await dbContext.Posts.findByIdAndUpdate(id, body)
+  }
 }
 
 const postService = new PostService()

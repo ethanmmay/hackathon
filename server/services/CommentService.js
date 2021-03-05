@@ -7,27 +7,23 @@ import {
 
 class CommentService {
   async find(query = {}) {
-    return await dbContext.Comments.find(query).populate('postId')
+    return await dbContext.Comments.find(query).populate('creatorId postId', '-subs')
   }
 
   async findById(id) {
-    const comment = await dbContext.Comments.findById(id)
-    if (!comment) {
+    const post = await dbContext.Comments.findById(id).populate('creatorId postId', '-subs')
+    if (!post) {
       throw new BadRequest('Invalid Id')
     }
-    return comment
+    return post
   }
 
   async create(body) {
     return await dbContext.Comments.create(body)
   }
 
-  async delete(commentId, deletorId) {
-    const comment = await dbContext.Comments.findOneAndDelete({ _id: commentId, creatorId: deletorId })
-    if (!comment) {
-      throw new BadRequest('You are not the creator, or that is not the correct comment Id')
-    }
-    return comment
+  async edit(id, body) {
+    return await dbContext.Comments.findByIdAndUpdate(id, body)
   }
 }
 
