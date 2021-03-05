@@ -4,7 +4,10 @@ import { postsService } from "../Services/PostsService.js";
 //Private
 function _draw() {
   let posts = ProxyState.posts;
-  console.log(posts);
+  let template = ''
+
+  posts.forEach(p => template += p.Template)
+  document.getElementById('posts').innerHTML = template
 }
 
 //Public
@@ -20,8 +23,7 @@ export default class PostsController {
     let rawPost = {
       title: form.title.value,
       body: form.body.value,
-      imgUrl: form.imgUrl.value,
-      upvotes
+      imgUrl: form.imgUrl.value
     }
     postsService.addPost()
   }
