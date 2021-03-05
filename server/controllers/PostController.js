@@ -17,7 +17,7 @@ export class PostController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      res.send({ message: 'Data Retrieved', data: await postService.find(req.query) })
+      res.send(await postService.find(req.query))
     } catch (error) {
       next(error)
     }
@@ -25,7 +25,7 @@ export class PostController extends BaseController {
 
   async getById(req, res, next) {
     try {
-      res.send({ message: 'Data Retrieved', data: await postService.findById(req.params.id) })
+      res.send(await postService.findById(req.params.id))
     } catch (error) {
       next(error)
     }
@@ -35,7 +35,7 @@ export class PostController extends BaseController {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorId = req.userInfo.id
-      res.send({ message: 'Data Created', data: await postService.create(req.body) })
+      res.send(await postService.create(req.body))
     } catch (error) {
       next(error)
     }

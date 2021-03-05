@@ -11,8 +11,7 @@ class PostsService {
   async getPosts(){
     try {
       const res = await api.get('api/posts')
-      console.log(res.data.data)
-      ProxyState.posts = res.data.data.map(p => new Post(p))
+      ProxyState.posts = res.data.map(p => new Post(p))
       console.log(ProxyState.posts)
     } catch (error) {
       console.error(error)
