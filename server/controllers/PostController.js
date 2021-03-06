@@ -14,7 +14,9 @@ export class PostController extends BaseController {
       .get('/:id/comments', this.getComments)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .delete('/:id', this.delete)
       .post('', this.create)
+      .put('/:id', this.edit)
   }
 
   async getAll(req, res, next) {

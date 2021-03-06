@@ -16,18 +16,38 @@ class PostsService {
     }
   }
 
-  async getPost(id) {
+  async setActivePost(id) {
     try {
-      const res = await api.get('api/posts/' + id)
+      if (ProxyState.posts.filter(p => p.isActivePost == true)) {
+        ProxyState.posts.filter(p => p.isActivePost == true).isActivePost = false
+      }
+      ProxyState.posts.filter(p => p.id != id).isActivePost = true
+      // DO CSS & TEMPLATING TO SHOW BODY & COMMENTS IF isActivePost IS TRUE
     } catch (error) {
-      next(error)
+      console.error(error)
     }
   }
 
   async addPost(rawPost) {
     try {
-      let post = await api.post('api/posts')
+      await api.post('api/posts', rawPost)
       ProxyState.posts = [...ProxyState.posts, new Post(rawPost)]
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async editPost(id, rawPost) {
+    try {
+      await api.put('api/posts/' + id, rawPost)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async deletePost(id) {
+    try {
+      await api.delete('api/posts/' + id)
     } catch (error) {
       console.error(error)
     }

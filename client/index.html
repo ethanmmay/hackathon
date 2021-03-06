@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+​
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    ​
     <link rel="stylesheet" href="assets/style/main.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&display=swap" rel="stylesheet">
@@ -12,13 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
     <title>client</title>
 </head>
+​
 
 <body>
     <header>
         <nav class="navbar navbar-dark navbar-expand bg-dark text-light border-bottom">
             <a class="navbar-brand" href="#">
                 <span class="ml-2 title-font">Spectre Social</span>
-                <p class="tag-font ml-2">Wierd is the new Cool</p>
+                <p class="tag-font ml-2">Weird is the new Cool</p>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +34,7 @@
                 </div>
             </div>
             <div class="flex-grow-1 justify-content-center align-items-center d-flex" id="authstate">
-
+                ​
             </div>
         </nav>
     </header>
@@ -39,35 +44,60 @@
                 <div class="col-12 post-header text-center">
                     <h4 class="tag-font">Spectre Feed</h4>
                 </div>
-                <div id="posts" class="card p-2 skeleton-loader">
+                <div id="posts" class="card p-2">
+                    ​
                 </div>
             </div>
             <div class="col-4 text-center">
                 <h4 class="tag-font">User Freaky Feed</h4>
-                <div id="posts" class="card p-2 border-radius skeleton-loader">
-
-                </div>
-                <div class="card-body border-top">
-                    <div class="skeleton-loader text block"></div>
-                    <div class="skeleton-loader text block"></div>
-                    <div class="skeleton-loader text"></div>
+                <div id="user-posts" class="card p-2 border-radius skeleton-loader">
+                    <div class="card px-2" id="post-maker">
+                        <div>
+                            <h3 class="tag-font1">Creepy Commenter Box</h3>
+                            <form onsubmit="app.postsController.createPost(event)" action="">
+                                <div class="my-2">
+                                    <label for="title" class="input-group-text  tag-font1"
+                                        id="basic-addon2">Heading</label>
+                                    <input class="form-control" type="text" name="title">
+                                </div>
+                                <div class="my-2">
+                                    <label for="post" class="input-group-text  tag-font1" id="basic-addon2">Post</label>
+                                    <input class="form-control" type="text-area" name="body">
+                                </div>
+                                <div class="my-2">
+                                    <label for="basic-url" class="input-group-text  tag-font1"
+                                        id="basic-addon2">Image?</label>
+                                    <input class="form-control" type="text" name="imgUrl">
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-success bold btn-block tag-font1" type="submit">
+                                        <h3>Submit
+                                            Strangeness</h3>
+                                    </button>
+                                </div>
+                                ​
+                                ​
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+            ​
         </div>
         </div>
     </main>
     <footer class="container-fluid bg-dark text-light">
         <form class="new-post" onsubmit="app.postController.createPost(event)">
-
+            ​
         </form>
-
+        ​
     </footer>
-
+    ​
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.auth0.com/js/auth0-spa-js/1.11/auth0-spa-js.production.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jakeoverall/auth0provider-client/browser/AuthProvider.browser.js"></script>
     <script src="app/main.js" type="module"></script>
 </body>
+​
 
 </html>
