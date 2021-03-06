@@ -52,6 +52,30 @@ class PostsService {
       console.error(error)
     }
   }
+
+  async upvote(id) {
+    try {
+      const post = ProxyState.posts.filter(p => p._id == id)[0]
+      post.upvotes++
+      ProxyState.posts.filter(p => p._id == id)[0] = post
+      ProxyState.posts = ProxyState.posts
+      await api.put('api/posts/' + id, post)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  async downvote(id) {
+    try {
+      const post = ProxyState.posts.filter(p => p._id == id)[0]
+      post.downvotes++
+      ProxyState.posts.filter(p => p._id == id)[0] = post
+      ProxyState.posts = ProxyState.posts
+      await api.put('api/posts/' + id, post)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 }
 
 export const postsService = new PostsService();

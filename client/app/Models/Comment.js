@@ -8,7 +8,9 @@ export default class Comment {
 
   get Template() {
     return /* html */ `
-        
+        <div>
+            ${this.title}
+        </div>
     `
   }
 }

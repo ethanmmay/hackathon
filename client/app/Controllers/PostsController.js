@@ -12,6 +12,10 @@ function _draw() {
   document.getElementById('posts').innerHTML = template
 }
 
+function _drawComments() {
+  
+}
+
 //Public
 export default class PostsController {
   constructor() {
@@ -44,6 +48,13 @@ export default class PostsController {
     postsService.editPost(id, rawPost)
   }
 
+  upvote(id) {
+    postsService.upvote(id)
+  }
+
+  downvote(id) {
+    postsService.downvote(id)
+  }
 
 
 }

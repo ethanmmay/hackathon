@@ -7,12 +7,20 @@ import {
 
 //Private
 function _draw() {
+    ProxyState.posts.forEach(p => {
+
+        let template = ''
+        let comments = ProxyState.comments.filter(c => c.postId == p._id)
+        comments.forEach(c => template += c.Template)
+        document.getElementById('comments-' + p._id)
+    })
 }
 
 //Public
 export default class CommentsController {
   constructor() {
     ProxyState.on("comments", _draw);
+    _draw()
   }
 
   createComment(event) {
