@@ -6,6 +6,8 @@ function _draw() {
   let posts = ProxyState.posts;
   let template = ''
 
+  console.log(posts)
+
   posts.forEach(p => template += p.Template)
   document.getElementById('posts').innerHTML = template
 }

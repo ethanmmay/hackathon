@@ -2,9 +2,11 @@ export default class Post {
   constructor(data) {
     this.title = data.title,
     this.body = data.body || '',
-    this.imgUrl = data.imgUrl || '',
+    this.imgUrl = data.imgUrl,
     this._id = data._id || data.id,
-    this.name = data.creatorId.email.split('@')[0]
+    this.name = data.creatorId.name.split('@')[0],
+    this.upvotes = data.upvotes || 0,
+    this.downvotes = data.downvotes || 0
   }
 
   get Template() {

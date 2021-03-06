@@ -25,6 +25,18 @@ class CommentService {
   async edit(id, body) {
     return await dbContext.Comments.findByIdAndUpdate(id, body)
   }
+
+  async getByPostId(postId) {
+    return await dbContext.Comments.find({ postId: postId })
+  }
+
+  async delete(commentId, deletorId) {
+    const comment = await dbContext.Comments.findOneAndDelete({ _id: commentId, creatorId: deletorId })
+    if (!comment) {
+      throw new BadRequest('You are not the creator, or that is not the correct comment Id')
+    }
+    return comment
+  }
 }
 
 const commentService = new CommentService()

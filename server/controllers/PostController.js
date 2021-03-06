@@ -3,7 +3,7 @@ import {
   Auth0Provider
 } from '@bcwdev/auth0provider'
 import postService from '../services/PostService'
-import { postsService } from '../../client/app/Services/PostsService'
+import commentService from '../services/CommentService'
 
 export class PostController extends BaseController {
   constructor() {
@@ -11,6 +11,7 @@ export class PostController extends BaseController {
     this.router
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/comments', this.getComments)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
@@ -53,6 +54,14 @@ export class PostController extends BaseController {
   async edit(req, res, next) {
     try {
       res.send(await postService.edit(req.params.id, req.body))
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getComments(req, res, next) {
+    try {
+      res.send(await commentService.find(req.params.id))
     } catch (error) {
       next(error)
     }

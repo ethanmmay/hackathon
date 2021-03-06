@@ -21,6 +21,14 @@ class PostService {
   async edit(id, body) {
     return await dbContext.Posts.findByIdAndUpdate(id, body)
   }
+
+  async delete(id, userId) {
+    const post = await dbContext.Comments.findOneAndDelete({ _id: id, creatorId: userId })
+    if (!post) {
+      throw new BadRequest('You are not the creator, or that is not the correct post Id')
+    }
+    return post
+  }
 }
 
 const postService = new PostService()

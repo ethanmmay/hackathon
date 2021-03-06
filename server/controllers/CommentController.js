@@ -6,7 +6,7 @@ import commentService from '../services/CommentService'
 
 export class CommentController extends BaseController {
   constructor() {
-    super('api/posts')
+    super('api/comments')
     this.router
       .get('', this.getAll)
       .get('/:id', this.getById)
